@@ -12,7 +12,7 @@ public class Calculator {
         this.service = cloud;
     }
 
-    public int perform (int i, int j){
+    public int performAdd (int i, int j){
         // return (i + j) * i;
         return service.add(i, j)*i;
     }

@@ -9,14 +9,14 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.time.Instant;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class TestCalculator {
     Calculator c = null;
+    private static final Logger testLogger = Logger.getLogger(TestCalculator.class.getName());
     @Mock
     CalculatorService service;
 
@@ -26,24 +26,41 @@ public class TestCalculator {
     @Before
     public void setUp() {
         c = new Calculator(service);
-        System.out.println("Testing begins at " + Instant.now().toString());
     }
 
     @After
     public void coolDown() {
-        Calculator c = null;
-        System.out.println("Testing has concluded at " + Instant.now().toString());
+        c = null;
     }
 
     @Test
-    public void testAdd() {
+    public void testAddSingle() {
+        testLogger.info("Beginning of unit testing starts at " + Instant.now().toString());
         assertEquals(5, c.add(2, 3));
+        testLogger.info("Ending of unit testing concludes at " + Instant.now().toString());
     }
 
     @Test
-    public void testPerform() {
+    public void testAddDouble() {
+        testLogger.info("Beginning of unit testing starts at " + Instant.now().toString());
+        assertEquals(50, c.add(21, 29));
+        testLogger.info("Ending of unit testing concludes at " + Instant.now().toString());
+    }
+
+    @Test
+    public void testAddTriple() {
+        testLogger.info("Beginning of unit testing starts at " + Instant.now().toString());
+        assertEquals(501, c.add(240, 261));
+        testLogger.info("Ending of unit testing concludes at " + Instant.now().toString());
+    }
+
+    @Test
+    public void testAddPerform() {
+        testLogger.info("Beginning of unit testing starts at " + Instant.now().toString());
         when(service.add(2,3)).thenReturn(5);
-        assertEquals(10, c.perform(2, 3));
+        assertEquals(10, c.performAdd(2, 3));
         verify(service).add(2,3);
+        testLogger.info("Ending of unit testing concludes at " + Instant.now().toString());
+
     }
 }
