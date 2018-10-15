@@ -4,6 +4,10 @@ public class Calculator {
 
     CalculatorService service;
 
+    // for use with App
+    public Calculator(){ }
+
+    // for use with testing
     public Calculator(CalculatorService cloud) {
         this.service = cloud;
     }
@@ -34,14 +38,14 @@ public class Calculator {
     }
 
     public int powerOf(int base, int exponent) {
-        if (exponent == 1) {
+        if (exponent == 0) {
             return 1;
         } else {
             return base * powerOf(base, exponent - 1);
         }
     }
 
-    public int factorial(int n) {
+    public long factorial(long n) {
         if (n <= 1) {
             return 1;
         } else {

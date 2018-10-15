@@ -2,16 +2,13 @@ package com.pfannon.simplecalc;
 
 import java.util.Scanner;
 
-import static org.mockito.Mockito.mock;
-
 public class App {
     private static String[] functions = {"1. Addition", "2. Subtraction", "3. Multiplication", "4. Division", "5. Square Root", "6. Power", "7. Factorial"};
     public static void main(String[] args) {
         System.out.println("Hello world! Let's start calculating!");
         Scanner in = new Scanner(System.in);
         boolean run = true;
-        CalculatorService service = mock(CalculatorService.class);
-        Calculator c = new Calculator(service);
+        Calculator c = new Calculator();
         int choose;
         while (run) {
             System.out.println("Choose your function: ");
@@ -72,9 +69,10 @@ public class App {
                         System.out.println("Result is " + c.factorial(first));
                         break;
                 }
-                boolean valid = true;
-                do {
+                boolean valid = false;
+                while (!valid) {
                     System.out.println("Calculate again? (y/n) ");
+                    in.nextLine();
                     String input = in.nextLine();
                     if (input.equals("y")) {
                         System.out.println("Mathematical!");
@@ -86,9 +84,8 @@ public class App {
                         run = false;
                     } else {
                         System.out.println("Not a valid answer!");
-                        valid = false;
                     }
-                } while (!valid);
+                }
             }
         }
     }
