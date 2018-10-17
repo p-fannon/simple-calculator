@@ -57,14 +57,14 @@ public class App {
                         System.out.println("Result is " + c.squareRoot(decimal));
                         break;
                     case 6:
-                        System.out.println("Pick your base integer: ");
+                        System.out.println("Pick your base number: ");
                         first = in.nextInt();
-                        System.out.println("Pick your exponent integer: ");
+                        System.out.println("Pick your exponent number: ");
                         second = in.nextInt();
                         System.out.println("Result is " + c.powerOf(first, second));
                         break;
                     case 7:
-                        System.out.println("Pick your integer: ");
+                        System.out.println("Pick your number: ");
                         first = in.nextInt();
                         System.out.println("Result is " + c.factorial(first));
                         break;
