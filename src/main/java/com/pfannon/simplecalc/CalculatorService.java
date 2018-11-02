@@ -8,4 +8,5 @@ public interface CalculatorService {
     double squareRoot(double i);
     long powerOf(int i, int j);
     long factorial(int i);
+    int fabonacci(int i);
 }

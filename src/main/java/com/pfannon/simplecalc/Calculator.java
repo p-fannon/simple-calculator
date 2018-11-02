@@ -47,6 +47,11 @@ public class Calculator {
         return service.factorial(i) - i;
     }
 
+    public int performFabonacci(int i) {
+        // return f(n) - n
+        return service.fabonacci(i) - i;
+    }
+
     public int add(int i, int j)  {
         return (i + j);
     }
@@ -87,5 +92,38 @@ public class Calculator {
         } else {
             return n * factorial(n - 1);
         }
+    }
+
+    public int fibonacci(int n) {
+        int result = 0;
+        int sum1 = 0;
+        int sum2 = 0;
+        if (n > 0) {
+            for (int i = 1; i <= n; i++) {
+                if (i < 2) {
+                    sum2 = i;
+                } else if (i == 2) {
+                    sum1 = 1;
+                    sum2 = 0;
+                } else {
+                    sum2 = sum1;
+                    sum1 = result;
+                }
+                result = sum1 + sum2;
+            }
+        }
+        if (n < 0) {
+            for (int i = -1; i >= n; i--) {
+                if (i > -2) {
+                    sum2 = 1;
+                    sum1 = 0;
+                } else {
+                    sum2 = sum1;
+                    sum1 = result;
+                }
+                result = sum2 - sum1;
+            }
+        }
+        return result;
     }
 }
